@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Проекты которым необходимо помочь</h2>
     <Card />
   </div>
 </template>

@@ -1,14 +1,28 @@
 <template>
-  <div>
-    Hello world
-    <BaseIcon name="percentage-min" />
-    <BaseIcon name="percentage-medium" />
-    <BaseIcon name="percentage-max" />
+  <div class="card">
+    <Image />
+    <h2 class="text bold"></h2>
+    <p class="text"></p>
+    <RemaingSumInfo />
+    <BaseTag />
+    <BaseTag />
   </div>
 </template>
 
 <script>
-export default {};
+import Image from "./Image";
+import RemaingSumInfo from "./RemaingSumInfo";
+export default {
+  components: {
+    Image,
+    RemaingSumInfo
+  }
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+  width: 450px;
+  height: auto;
+}
+</style>
