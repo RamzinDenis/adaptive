@@ -4,6 +4,22 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+
+@mixin body-copy_sm {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+@mixin body-copy_3 {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+@mixin body-copy {
+  font-size: 16px;
+  line-height: 26px;
+}
+
 @mixin flex {
   display: flex;
 }

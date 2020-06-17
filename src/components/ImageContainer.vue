@@ -22,6 +22,8 @@ export default {};
   height: 180px;
   @include flex;
   position: relative;
+  border-radius: 0px 10px 10px 10px;
+
   &__content {
     flex-direction: column;
     @include flexBetween;
@@ -41,7 +43,8 @@ export default {};
     position: absolute;
     z-index: -2;
     right: -20px;
-    bottom: -30px;
+    bottom: -20px;
+
     background-color: $invisible-grey;
   }
 }
