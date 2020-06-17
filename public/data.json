@@ -1,0 +1,52 @@
+[
+  {
+    "imageContainer": {
+      "src": "assets/images/children.jpg",
+      "fund": "assets/images/davis-fund.png",
+      "location": "Омск"
+    },
+    "title": "Сбор средств для постойки школ в Индонезии",
+    "text": "Получение начального образования важная часть жизненного пути любого человека. Дети из Индонезии будут очень благодарны вам",
+    "RemainingSum": {
+      "percentages": "37%",
+      "total": "1 000 000",
+      "current": "370 000",
+      "deadline": "7 сентября"
+    },
+    "tags": ["Помощь нуждающимся", "Закят"],
+    "id": 1
+  },
+  {
+    "imageContainer": {
+      "src": "assets/images/grandpa.jpg",
+      "fund": "assets/images/nada-fund.png",
+      "location": "Спб"
+    },
+    "title": "Поможем дедушке построить пекарню",
+    "text": "Дедушка Артём собрал свои последние сбережения чтобы воплотить свою мечту - построить пекарню. Давайте поможем ему!",
+    "RemainingSum": {
+      "percentages": "84%",
+      "total": "1 000 000",
+      "current": "840 000",
+      "deadline": "завтра"
+    },
+    "tags": ["Помощь нуждающимся", "Фитр"],
+    "id": 2
+  },
+  {
+    "imageContainer": {
+      "src": "assets/images/diana.jpg",
+      "fund": "assets/images/nada-fund.png"
+    },
+    "title": "Сбор для Арифулиной Дианы",
+    "text": "Диана — единственная и долгожданная! У нее сложный порок сердца и ей нужно провести еще одну операцию Фонтена",
+    "RemainingSum": {
+      "percentages": "10%",
+      "total": "1 000 000",
+      "current": "100 000",
+      "deadline": "18 июня"
+    },
+    "tags": ["Помощь нуждающимся", "Садака", "Диана Арифулина"],
+    "id": 3
+  }
+]
