@@ -4,3 +4,16 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+@mixin flex {
+  display: flex;
+}
+
+@mixin flexCenter {
+  align-items: center;
+  @include flex;
+}
+
+@mixin flexBetween {
+  justify-content: space-between;
+  @include flex;
+}
