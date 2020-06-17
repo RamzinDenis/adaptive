@@ -2,11 +2,11 @@
   <div class="card">
     <!-- add wrapper because transform causing z-index issue -->
     <div class="wrapper">
-      <ImageContainer />
+      <ImageContainer :imageData="card.imageData" />
     </div>
 
-    <h2 class="card__title">{{ title }}</h2>
-    <p class="card__text">{{ text }}</p>
+    <h2 class="card__title">{{ card.title }}</h2>
+    <p class="card__text">{{ card.text }}</p>
 
     <RemaingSumInfo />
     <div class="tag-container">
@@ -24,12 +24,40 @@ export default {
     ImageContainer,
     RemaingSumInfo
   },
-  data() {
-    return {
-      text:
-        "Диана — единственная и долгожданная! У нее сложный порок сердца и ей нужно провести еще одну операцию Фонтена",
-      title: "Сбор средств для постойки школ в Индонезии "
-    };
+  props: {
+    card: {
+      type: Object,
+      required: true,
+      validator: value => {
+        const { imageData, remainingSum, tags, ...rest } = value;
+
+        const keys = [
+          "imageData",
+          "title",
+          "text",
+          "remainingSum",
+          "tags",
+          "id"
+        ];
+        const keysChecked = Object.keys(value).every(
+          (key, index) => key === keys[index]
+        );
+
+        const subObjects = [
+          ...Object.values(imageData),
+          ...Object.values(remainingSum),
+          ...tags
+        ];
+        const objectsChecked = subObjects.every(
+          item => typeof item === "string"
+        );
+        const otherPropsChecked = Object.values(rest).every(
+          item => typeof item === "string"
+        );
+
+        return objectsChecked && otherPropsChecked && keysChecked;
+      }
+    }
   }
 };
 </script>

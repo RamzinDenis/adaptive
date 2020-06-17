@@ -1,19 +1,39 @@
 <template>
-  <div class="img-container">
+  <div class="img-container" :style="cssProps">
     <div class="img-container__shadow"></div>
 
     <div class="img-container__content">
-      <img class="img-container__title" src="../assets/images/davis-fund.png" />
+      <img
+        class="img-container__title"
+        :src="require(`../${imageData.fund}`)"
+      />
       <div class="img-container__geo">
-        <BaseIcon name="geo" />
-        <span class="img-container__geo-text">Омск</span>
+        <BaseIcon name="geo" class="basic" />
+        <span class="img-container__geo-text">{{ imageData.location }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    imageData: {
+      type: Object,
+      required: true
+      // validator: value => {
+      //   return true;
+      // }
+    }
+  },
+  data() {
+    return {
+      cssProps: {
+        backgroundImage: `url(${require(`../${this.imageData.src}`)})`
+      }
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -31,10 +51,14 @@ export default {};
   }
   &__geo {
     @include flexCenter;
+    color: $white;
+
     &-text {
-      color: $white;
       margin-left: 7px;
       @include h5;
+      &:nth-child() {
+        color: black;
+      }
     }
   }
   &__shadow {

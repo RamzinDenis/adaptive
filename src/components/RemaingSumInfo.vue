@@ -54,7 +54,6 @@ export default {};
   font-size: 8px;
   line-height: 10px;
   text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
+  @include upperCaseBold;
 }
 </style>

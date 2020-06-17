@@ -1,12 +1,12 @@
 <template>
   <div>
-    <header>
+    <header class="subject">
       <div class="dot"></div>
-      <h3>Название</h3>
+      <h3 class="subject__title">Люди которым необходимо помочь</h3>
     </header>
     <main>
-      <section class="cards__container">
-        <Card />
+      <section class="cards-container">
+        <Card :card="card" v-for="card in cards" :key="card.id" />
       </section>
     </main>
     <Footer />
@@ -34,11 +34,24 @@ export default {
       .then(data => data.json())
       .then(result => {
         console.log(result);
-        // this.cards = result;
+        this.cards = result;
       })
       .catch(err => (this.err = err.toString()));
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.cards-container {
+  @include flexBetween;
+  @include container;
+  max-width: calc(1110px + 40px);
+}
+.subject {
+  @include container;
+  display: flex;
+}
+.subject__title {
+  @include h3;
+}
+</style>

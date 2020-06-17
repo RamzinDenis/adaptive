@@ -41,4 +41,8 @@ export default {
   position: absolute;
   display: flex;
 }
+.basic {
+  display: flex;
+  align-items: center;
+}
 </style>
