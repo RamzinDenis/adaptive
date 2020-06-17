@@ -6,6 +6,7 @@
 
 <script>
 import Donations from "./views/Donations";
+
 import "normalize.css";
 
 export default {
