@@ -18,6 +18,9 @@ export default {
 </script>
 
 <style>
+body {
+  font-family: "Rubik", sans-serif;
+}
 p {
   margin: 0;
 }

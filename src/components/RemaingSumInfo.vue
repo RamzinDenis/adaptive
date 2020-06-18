@@ -1,7 +1,7 @@
 <template>
   <div class="remaining-sum">
-    <BaseIcon name="percentage-min" class="rounded_grey">
-      <span class="icon-text green">37%</span>
+    <BaseIcon :name="remainingSum.iconName" class="rounded_grey">
+      <span :class="getIconColor">{{ remainingSum.percentages }}</span>
     </BaseIcon>
 
     <!-- 90%, flex between -->
@@ -9,28 +9,56 @@
       <div class="remaining-sum__item">
         <p class="remaining-sum__text">необходимо собрать</p>
         <p class="remaining-sum__total">
-          <span class="remaining-sum__total green">45 194 </span>
-          <span class="remaining-sum__total">из 1 000 000 RUB</span>
+          <span class="remaining-sum__total green"
+            >{{ remainingSum.current }}
+          </span>
+          <span class="remaining-sum__total"
+            >из {{ remainingSum.total }} RUB</span
+          >
         </p>
       </div>
 
       <div class="remaining-sum__item">
         <p class="remaining-sum__text">конец</p>
-        <span class="remaining-sum__total">завтра</span>
+        <span class="remaining-sum__total">{{ remainingSum.deadline }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    remainingSum: {
+      type: Object,
+      required: true,
+      validator: value => {
+        const keys = [
+          "percentages",
+          "iconName",
+          "total",
+          "current",
+          "deadline"
+        ];
+        return Object.keys(value).every(key => keys.includes(key));
+      }
+    }
+  },
+  computed: {
+    getIconColor() {
+      return parseInt(this.remainingSum.percentages) > 60
+        ? "white icon-text"
+        : "green icon-text";
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 .remaining-sum {
   @include flex;
   &__value {
-    width: 70%;
+    width: 75%;
     @include flexBetween;
     align-items: center;
     margin-left: 10px;
@@ -49,6 +77,9 @@ export default {};
 }
 .green {
   color: $green;
+}
+.white {
+  color: $white;
 }
 .icon-text {
   font-size: 8px;

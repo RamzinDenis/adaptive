@@ -8,11 +8,11 @@
     <h2 class="card__title">{{ card.title }}</h2>
     <p class="card__text">{{ card.text }}</p>
 
-    <RemaingSumInfo />
+    <RemaingSumInfo :remainingSum="card.remainingSum" />
     <div class="tag-container">
-      <BaseTag text="помощь нуждающимся" />
-      <BaseTag text="закят" />
+      <BaseTag v-for="tag in card.tags" :key="tag.id" :text="tag.text" />
     </div>
+    <BaseIcon class="rounded_gradient" name="theHand" />
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
       required: true,
       validator: value => {
         const { imageData, remainingSum, tags, ...rest } = value;
-
+        /* its a lot easier to make it with TS */
         const keys = [
           "imageData",
           "title",
@@ -43,19 +43,23 @@ export default {
           (key, index) => key === keys[index]
         );
 
-        const subObjects = [
-          ...Object.values(imageData),
-          ...Object.values(remainingSum),
-          ...tags
-        ];
+        const subObjects = [imageData, remainingSum];
         const objectsChecked = subObjects.every(
-          item => typeof item === "string"
+          item => typeof item === "object"
         );
         const otherPropsChecked = Object.values(rest).every(
           item => typeof item === "string"
         );
+        const tagsChecked = tags.map(tag =>
+          Object.values(tag).every(tagProp => typeof tagProp === "string")
+        );
 
-        return objectsChecked && otherPropsChecked && keysChecked;
+        return (
+          objectsChecked &&
+          otherPropsChecked &&
+          keysChecked &&
+          tagsChecked.every(x => x === true)
+        );
       }
     }
   }
@@ -65,9 +69,10 @@ export default {
 <style lang="scss" scoped>
 .card {
   width: 320px;
-  padding: 0 20px 50px 20px;
+  padding: 0 20px 30px 20px;
   height: auto;
-  transition: background-color 0.3s linear;
+  @include transitionLinear;
+  position: relative;
   &__text {
     margin: 20px 0;
     @include body-copy;
@@ -79,6 +84,9 @@ export default {
   }
   &:hover {
     background-color: $invisible-grey;
+    .rounded_gradient {
+      opacity: 1;
+    }
   }
 }
 .wrapper {
@@ -87,5 +95,6 @@ export default {
 .tag-container {
   @include flex;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 </style>

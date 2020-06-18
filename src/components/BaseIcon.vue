@@ -45,4 +45,19 @@ export default {
   display: flex;
   align-items: center;
 }
+.rounded_gradient {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image: $blue-gradient;
+  @include flexCenter;
+  box-shadow: $button-shadow;
+  justify-content: center;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -30px;
+  opacity: 0;
+  @include transitionLinear;
+}
 </style>

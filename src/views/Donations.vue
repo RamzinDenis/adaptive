@@ -2,7 +2,7 @@
   <div>
     <header class="subject">
       <div class="dot"></div>
-      <h3 class="subject__title">Люди которым необходимо помочь</h3>
+      <h3 class="subject__title">Проекты, которым необходимо помочь</h3>
     </header>
     <main>
       <section class="cards-container">
@@ -50,8 +50,20 @@ export default {
 .subject {
   @include container;
   display: flex;
+  margin-bottom: 40px;
+  align-items: flex-start;
 }
 .subject__title {
   @include h3;
+  margin: 0;
+  margin-left: 20px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: $red;
+  border-radius: 50%;
+  display: flex;
+  align-self: center;
 }
 </style>

@@ -20,10 +20,11 @@ export default {
   props: {
     imageData: {
       type: Object,
-      required: true
-      // validator: value => {
-      //   return true;
-      // }
+      required: true,
+      validator: value => {
+        const keys = ["src", "fund", "location"];
+        return Object.keys(value).every(key => keys.includes(key));
+      }
     }
   },
   data() {
@@ -51,14 +52,10 @@ export default {
   }
   &__geo {
     @include flexCenter;
-    color: $white;
-
     &-text {
+      color: $white;
       margin-left: 7px;
       @include h5;
-      &:nth-child() {
-        color: black;
-      }
     }
   }
   &__shadow {

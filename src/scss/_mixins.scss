@@ -36,6 +36,10 @@
   max-width: 1110px;
 }
 
+@mixin transitionLinear {
+  transition: 0.3s linear;
+}
+
 @mixin flex {
   display: flex;
 }
