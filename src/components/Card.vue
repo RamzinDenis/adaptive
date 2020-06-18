@@ -84,6 +84,7 @@ export default {
   }
   &__title {
     margin-top: 20px;
+    margin-bottom: 0px;
     font-weight: 500;
     @include body-copy;
   }
@@ -108,6 +109,14 @@ export default {
     width: 285px;
     margin-bottom: 60px;
     @include fadeIn;
+  }
+}
+@media screen and (max-width: 414px) {
+  .card {
+    &__title,
+    &__text {
+      @include mobile-text;
+    }
   }
 }
 </style>

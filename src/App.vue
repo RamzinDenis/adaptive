@@ -27,7 +27,7 @@ p {
 .subject {
   @include container;
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   align-items: flex-start;
 }
 .subject__title {
@@ -37,6 +37,7 @@ p {
 }
 
 .dot {
+  @include transitionLinear;
   width: 10px;
   height: 10px;
   background-color: $red;
@@ -44,5 +45,15 @@ p {
   display: flex;
   align-self: center;
   cursor: pointer;
+}
+@media screen and (max-width: 414px) {
+  .subject {
+    margin-bottom: 20px;
+    &__title {
+      font-size: 10px;
+      line-height: 30px;
+      @include upperCaseBold;
+    }
+  }
 }
 </style>

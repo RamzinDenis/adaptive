@@ -62,9 +62,10 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  height: 54.8vh;
+  min-height: 529px;
   background-color: $blue;
   color: $white;
+  height: fit-content;
 
   &__container {
     @include container;
@@ -74,6 +75,15 @@ export default {
 @media screen and (max-width: 1100px) {
   .footer {
     padding: 80px 40px 0px 40px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .footer {
+    padding: 0px 20px;
+    min-height: 630px;
+    &__container {
+      padding-top: 60px;
+    }
   }
 }
 </style>

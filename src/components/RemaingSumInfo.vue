@@ -4,7 +4,6 @@
       <span :class="getIconColor">{{ remainingSum.percentages }}</span>
     </BaseIcon>
 
-    <!-- 90%, flex between -->
     <div class="remaining-sum__value">
       <div class="remaining-sum__item">
         <p class="remaining-sum__text">необходимо собрать</p>
@@ -86,5 +85,10 @@ export default {
   line-height: 10px;
   text-align: center;
   @include upperCaseBold;
+}
+@media screen and (max-width: 600px) {
+  .remaining-sum__total {
+    max-width: 144px;
+  }
 }
 </style>

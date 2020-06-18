@@ -76,3 +76,13 @@
     }
   }
 }
+
+@mixin mobile-text {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin mobile-h1 {
+  font-size: 30px;
+  line-height: 35px;
+}

@@ -2,18 +2,14 @@
   <div>
     <header class="subject">
       <div class="dot"></div>
-      <h3 class="subject__title">Проекты, которым необходимо помочь</h3>
+      <h3 class="subject__title">{{ mainTitle }}</h3>
     </header>
 
     <main class="main">
       <section class="cards-container">
         <Card :card="card" v-for="card in cards" :key="card.id" />
 
-        <div
-          class="tablet-bar"
-          v-if="$mq === 'tablet'"
-          @click="toggleTabletItems"
-        >
+        <div class="tablet-bar" v-if="$mq === 'tablet'" @click="onToggle">
           <div class="tablet-bar__lines">
             <div
               v-for="(item, index) in 2"
@@ -21,15 +17,30 @@
               :key="index"
             ></div>
           </div>
-          <p class="tablet-bar__text">Смотреть все проекты</p>
+          <p class="tablet-bar__text">{{ showAllText }}</p>
         </div>
       </section>
-      <div class="mobile-dots" v-if="$mq === 'mobile'">
-        <div class="dot dot_gold" v-for="item in response" :key="item.id"></div>
+
+      <div
+        class="mobile-dots"
+        v-if="$mq === 'mobile' && this.isShowAll === false"
+      >
+        <div
+          class="dot dot_gold"
+          v-for="(item, index) in response"
+          :key="item.id"
+          :style="index + 1 === currentCard ? 'background-color: #b19b69' : ''"
+          @click="handleMobileDotClick(index)"
+        ></div>
       </div>
+
       <div class="divider">
         <div class="divider__line"></div>
-        <BaseButton class="button_white" />
+        <BaseButton
+          class="button_white"
+          :text="mobileBtnText"
+          @btn-onClick="mobileOnToggle"
+        />
         <div class="divider__line"></div>
       </div>
     </main>
@@ -51,7 +62,7 @@ export default {
     return {
       response: [],
       error: "",
-      showAllTablet: false,
+      isShowAll: false,
       currentCard: 1
     };
   },
@@ -67,16 +78,37 @@ export default {
   computed: {
     cards() {
       if (this.$mq === "mobile") {
-        return this.response.slice(this.currentCard - 1, this.currentCard);
+        return this.isShowAll === true
+          ? this.response
+          : this.response.slice(this.currentCard - 1, this.currentCard);
       }
-      return this.$mq === "tablet" && !!this.showAllTablet === false
+      return this.$mq === "tablet" && this.isShowAll === false
         ? this.response.slice(0, 2)
         : this.response;
+    },
+    showAllText() {
+      return this.isShowAll ? "Спрятать проекты" : "Смотреть все проекты";
+    },
+    mobileBtnText() {
+      return this.$mq === "mobile" ? this.showAllText : "";
+    },
+    mainTitle() {
+      return this.$mq === "mobile"
+        ? "те, кому Сейчас необходимо помочь"
+        : "проекты, которым необходимо помочь";
     }
   },
   methods: {
-    toggleTabletItems() {
-      this.showAllTablet = !this.showAllTablet;
+    onToggle() {
+      this.isShowAll = !this.isShowAll;
+    },
+    handleMobileDotClick(index) {
+      this.currentCard = index + 1;
+    },
+    mobileOnToggle() {
+      if (this.$mq !== "mobile") return;
+      this.onToggle();
+      this.isShowAll === false ? window.scrollTo(0, 0) : "";
     }
   }
 };
@@ -126,7 +158,8 @@ export default {
     }
     &__lines {
       @include flexBetween;
-      width: 40px;
+      width: 58px;
+      margin-left: 20px;
     }
     &__line {
       height: 2.27px;
@@ -140,13 +173,22 @@ export default {
     justify-content: center;
   }
   .dot_gold {
-    background-color: $gold-bright;
+    background-color: $gold-pale;
     margin-right: 20px;
   }
   /* When screen no longer can container more than 1 card */
   @media screen and (max-width: 729px) {
     .tablet-bar {
       display: none;
+    }
+    .cards-container {
+      justify-content: center;
+    }
+  }
+  @media screen and (max-width: 414px) {
+    .subject,
+    .main {
+      padding: 0 20px;
     }
   }
 }

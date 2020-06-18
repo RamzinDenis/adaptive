@@ -20,7 +20,9 @@
       <div class="slider__text" :key="localData[currentItem].id">
         {{ localData[currentItem].text }}
       </div>
-      <BaseButton class="button_gold" />
+      <BaseButton class="button_gold" :text="mobileBtnText" :icon="true">
+        <BaseIcon name="heart" />
+      </BaseButton>
     </div>
   </div>
 </template>
@@ -59,6 +61,13 @@ export default {
     handleSliderClick() {
       let tmp = this.localData.shift();
       setTimeout(() => this.localData.push(tmp), 0);
+    }
+  },
+  computed: {
+    mobileBtnText() {
+      return this.$mq === "mobile"
+        ? `рассчитать ${this.localData[this.currentItem].title.toLowerCase()}`
+        : "";
     }
   }
 };
@@ -119,10 +128,37 @@ export default {
     }
     &__arrow-icon {
       transform: rotate(-90deg);
-      left: 93%;
+      left: 95%;
       top: 50%;
-      margin-top: -5px;
+      margin-top: -35px;
     }
+  }
+}
+@media screen and (max-width: 730px) {
+  .slider__item {
+    min-width: 220px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .slider {
+    &__item {
+      @include mobile-h1;
+      min-width: auto;
+      margin-right: 40px;
+    }
+    &__text {
+      @include mobile-text;
+      font-weight: 300;
+    }
+    &__arrow-icon {
+      left: 90%;
+      margin-top: -20px;
+    }
+  }
+}
+@media screen and (max-width: 360px) {
+  .slider__item {
+    margin-right: 25px;
   }
 }
 </style>
