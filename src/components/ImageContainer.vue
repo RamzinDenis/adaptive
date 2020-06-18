@@ -69,4 +69,12 @@ export default {
     background-color: $invisible-grey;
   }
 }
+@media screen and (max-width: 768px) {
+  .img-container {
+    height: 160px;
+    &__shadow {
+      height: 160px;
+    }
+  }
+}
 </style>

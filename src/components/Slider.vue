@@ -115,6 +115,7 @@ export default {
     &__item {
       min-width: 241px;
       margin-right: 10px;
+      margin-bottom: 45px;
     }
     &__arrow-icon {
       transform: rotate(-90deg);

@@ -12,12 +12,11 @@
       "iconName": "percentage-medium",
       "total": "1 000 000",
       "current": "370 000",
-      "deadline": "7 сентября"
+      "deadline": "7 июня"
     },
     "tags": [
       { "text": "Помощь нуждающимся", "id": "1" },
-      { "text": "Закят", "id": "2" },
-      { "text": "Дети", "id": "3" }
+      { "text": "Закят", "id": "2" }
     ],
     "id": "1"
   },

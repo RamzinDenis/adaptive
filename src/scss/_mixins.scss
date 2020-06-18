@@ -8,6 +8,10 @@
   line-height: 10px;
   @include upperCaseBold;
 }
+@mixin h4 {
+  font-size: 14px;
+  line-height: 20px;
+}
 
 @mixin h3 {
   font-size: 13px;
@@ -62,7 +66,7 @@
 }
 
 @mixin fadeIn {
-  animation: fadeIn 1.5s linear;
+  animation: fadeIn 1s linear;
   @keyframes fadeIn {
     from {
       opacity: 0;

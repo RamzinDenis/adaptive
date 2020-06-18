@@ -43,5 +43,6 @@ p {
   border-radius: 50%;
   display: flex;
   align-self: center;
+  cursor: pointer;
 }
 </style>

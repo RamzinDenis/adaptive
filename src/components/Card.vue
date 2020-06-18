@@ -5,11 +5,16 @@
       <ImageContainer :imageData="card.imageData" />
     </div>
 
+    <div class="tag-container" v-if="$mq === 'tablet'">
+      <BaseTag v-for="tag in card.tags" :key="tag.id" :text="tag.text" />
+    </div>
+
     <h2 class="card__title">{{ card.title }}</h2>
     <p class="card__text">{{ card.text }}</p>
 
     <RemaingSumInfo :remainingSum="card.remainingSum" />
-    <div class="tag-container">
+
+    <div class="tag-container" v-if="$mq !== 'tablet'">
       <BaseTag v-for="tag in card.tags" :key="tag.id" :text="tag.text" />
     </div>
     <BaseIcon class="rounded_gradient" name="theHand" />
@@ -69,7 +74,7 @@ export default {
 <style lang="scss" scoped>
 .card {
   width: 320px;
-  padding: 0 20px 30px 20px;
+  padding: 0 20px 50px 20px;
   height: auto;
   @include transitionLinear;
   position: relative;
@@ -96,5 +101,13 @@ export default {
   @include flex;
   margin-top: 20px;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 285px;
+    margin-bottom: 60px;
+    @include fadeIn;
+  }
 }
 </style>

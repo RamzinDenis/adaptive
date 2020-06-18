@@ -3,6 +3,7 @@ import App from "./App.vue";
 import BaseIcon from "@/components/BaseIcon";
 import BaseTag from "@/components/BaseTag";
 import BaseButton from "@/components/BaseButton";
+import Vuemq from "vue-mq";
 
 const components = {
   BaseIcon: BaseIcon,
@@ -15,6 +16,14 @@ Object.entries(components).forEach(([name, component]) =>
 );
 
 Vue.config.productionTip = false;
+
+Vue.use(Vuemq, {
+  breakpoints: {
+    mobile: 415,
+    tablet: 769,
+    dekstop: Infinity
+  }
+});
 
 new Vue({
   render: h => h(App)
