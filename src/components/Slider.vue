@@ -1,7 +1,7 @@
 <template>
   <div class="slider">
     <div class="slider__container">
-      <transition-group name="reorder" tag="div">
+      <transition-group name="reorder" tag="div" class="slider__items">
         <h2
           class="slider__item"
           v-for="(item, index) in localData"
@@ -15,6 +15,7 @@
         <BaseIcon name="arrow-down" />
       </div>
     </div>
+
     <div class="slider__body">
       <div class="slider__text" :key="localData[currentItem].id">
         {{ localData[currentItem].text }}
@@ -98,8 +99,29 @@ export default {
     overflow: hidden;
     @include fadeIn;
   }
-  .reorder-move {
-    transition: transform 1.5s ease;
+}
+
+.reorder-move {
+  transition: transform 1.5s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .slider {
+    flex-direction: column;
+    &__items {
+      display: flex;
+      position: relative;
+    }
+    &__item {
+      min-width: 241px;
+      margin-right: 10px;
+    }
+    &__arrow-icon {
+      transform: rotate(-90deg);
+      left: 93%;
+      top: 50%;
+      margin-top: -5px;
+    }
   }
 }
 </style>

@@ -71,4 +71,9 @@ export default {
     padding-top: 80px;
   }
 }
+@media screen and (max-width: 1100px) {
+  .footer {
+    padding: 80px 20px 0px 20px;
+  }
+}
 </style>
