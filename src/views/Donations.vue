@@ -8,6 +8,11 @@
       <section class="cards-container">
         <Card :card="card" v-for="card in cards" :key="card.id" />
       </section>
+      <div class="divider">
+        <div class="divider__line"></div>
+        <BaseButton class="button_white" />
+        <div class="divider__line"></div>
+      </div>
     </main>
     <Footer />
   </div>
@@ -33,7 +38,6 @@ export default {
       .getCards()
       .then(data => data.json())
       .then(result => {
-        console.log(result);
         this.cards = result;
       })
       .catch(err => (this.err = err.toString()));
@@ -47,23 +51,18 @@ export default {
   @include container;
   max-width: calc(1110px + 40px);
 }
-.subject {
+
+.divider {
+  @include flexCenter;
   @include container;
-  display: flex;
-  margin-bottom: 40px;
-  align-items: flex-start;
-}
-.subject__title {
-  @include h3;
-  margin: 0;
-  margin-left: 20px;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: $red;
-  border-radius: 50%;
-  display: flex;
-  align-self: center;
+  height: fit-content;
+  margin-top: 76px;
+  margin-bottom: 100px;
+
+  &__line {
+    background-color: $gold;
+    height: 1px;
+    flex-basis: 40%;
+  }
 }
 </style>

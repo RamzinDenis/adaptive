@@ -51,7 +51,7 @@ export default {
   border-radius: 50%;
   background-image: $blue-gradient;
   @include flexCenter;
-  box-shadow: $button-shadow;
+  box-shadow: $blue-shadow;
   justify-content: center;
   position: absolute;
   bottom: -30px;

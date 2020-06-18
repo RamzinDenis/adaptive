@@ -15,6 +15,13 @@
   @include upperCaseBold;
 }
 
+@mixin h1 {
+  font-size: 50px;
+  line-height: 60px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
 @mixin body-copy_sm {
   font-size: 10px;
   line-height: 14px;
@@ -52,4 +59,16 @@
 @mixin flexBetween {
   justify-content: space-between;
   @include flex;
+}
+
+@mixin fadeIn {
+  animation: fadeIn 1.5s linear;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
