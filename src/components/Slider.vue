@@ -36,12 +36,16 @@ export default {
   props: {
     sliderData: {
       type: Array,
-      required: true
+      required: true,
+      validator: value => {
+        const keys = ["text", "title", "id"];
+        const objKeys = value.map(item => Object.keys(item));
+        return objKeys.flat().every(key => keys.includes(key));
+      }
     }
   },
   data() {
     return {
-      currentPos: 0,
       currentItem: 1,
       lastItem: 4,
       localData: this.sliderData
@@ -55,11 +59,6 @@ export default {
       return {
         color: index === this.currentItem ? "white" : "",
         opacity
-      };
-    },
-    getSliderItemsStyle() {
-      return {
-        "margin-top": this.currentPos + "px"
       };
     },
     handleSliderClick() {
