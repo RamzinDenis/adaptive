@@ -6,7 +6,10 @@
     </header>
 
     <main class="main">
-      <section class="cards-container">
+      <section
+        class="cards-container"
+        :style="isShowAll ? 'flex-wrap :  wrap; justify-content: center' : ''"
+      >
         <Card :card="card" v-for="card in cards" :key="card.id" />
 
         <div class="tablet-bar" v-if="$mq === 'tablet'" @click="onToggle">
@@ -23,7 +26,10 @@
 
       <div
         class="mobile-dots"
-        v-if="$mq === 'mobile' && this.isShowAll === false"
+        v-if="
+          ($mq === 'mobile' && this.isShowAll === false) ||
+            ($mq === 'md' && this.isShowAll === false)
+        "
       >
         <div
           class="dot dot_gold"
@@ -77,7 +83,7 @@ export default {
   },
   computed: {
     cards() {
-      if (this.$mq === "mobile") {
+      if (this.$mq === "mobile" || this.$mq === "md") {
         return this.isShowAll === true
           ? this.response
           : this.response.slice(this.currentCard - 1, this.currentCard);
@@ -90,7 +96,7 @@ export default {
       return this.isShowAll ? "Спрятать проекты" : "Смотреть все проекты";
     },
     mobileBtnText() {
-      return this.$mq === "mobile" ? this.showAllText : "";
+      return this.$mq === "mobile" || this.$mq === "md" ? this.showAllText : "";
     },
     mainTitle() {
       return this.$mq === "mobile"
@@ -106,7 +112,7 @@ export default {
       this.currentCard = index + 1;
     },
     mobileOnToggle() {
-      if (this.$mq !== "mobile") return;
+      if (this.$mq !== "mobile" || this.$mq !== "md") return;
       this.onToggle();
       this.isShowAll === false ? window.scrollTo(0, 0) : "";
     }
@@ -177,14 +183,20 @@ export default {
     margin-right: 20px;
   }
   /* When screen no longer can container more than 1 card */
-  @media screen and (max-width: 729px) {
-    .tablet-bar {
-      display: none;
+  @media screen and (max-width: 729px) and (min-width: 600px) {
+    .cards-container {
+      flex-wrap: nowrap;
     }
+  }
+  @media screen and (max-width: 600px) and (min-width: 414px) {
     .cards-container {
       justify-content: center;
     }
+    .tablet-bar {
+      display: none;
+    }
   }
+
   @media screen and (max-width: 414px) {
     .subject,
     .main {

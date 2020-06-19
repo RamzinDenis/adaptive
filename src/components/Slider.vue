@@ -108,7 +108,6 @@ export default {
     @include body-copy;
     font-weight: 300;
     margin-bottom: 40px;
-    overflow: hidden;
     @include fadeIn;
   }
 }
@@ -123,6 +122,7 @@ export default {
     &__items {
       display: flex;
       position: relative;
+      overflow: hidden;
     }
     &__item {
       min-width: 241px;
@@ -137,9 +137,10 @@ export default {
     }
   }
 }
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 650px) {
   .slider__item {
-    min-width: 220px;
+    min-width: auto;
+    margin-right: 40px;
   }
 }
 @media screen and (max-width: 414px) {
@@ -147,11 +148,8 @@ export default {
     &__item {
       @include mobile-h1;
       min-width: auto;
-      margin-right: 0;
-      &:nth-child(1),
-      &:nth-child(2) {
-        margin-right: 40px;
-      }
+      width: auto;
+      margin-right: 40px;
     }
     &__text {
       @include mobile-text;

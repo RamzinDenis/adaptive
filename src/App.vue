@@ -21,7 +21,7 @@ export default {
 body {
   font-family: "Rubik", sans-serif;
 }
-html {
+#app {
   overflow-x: hidden;
 }
 p {

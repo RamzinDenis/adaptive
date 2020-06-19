@@ -20,6 +20,7 @@ Vue.config.productionTip = false;
 Vue.use(Vuemq, {
   breakpoints: {
     mobile: 415,
+    md: 599,
     tablet: 769,
     dekstop: Infinity
   }

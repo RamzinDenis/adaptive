@@ -91,6 +91,7 @@ export default {
   }
   &:hover {
     background-color: $invisible-grey;
+    border-radius: 10px;
     .rounded_gradient {
       opacity: 1;
     }
