@@ -76,6 +76,7 @@ export default {
   width: 320px;
   padding: 0 20px 50px 20px;
   height: auto;
+  min-width: 260px;
   @include transitionLinear;
   position: relative;
   &__text {
@@ -107,6 +108,7 @@ export default {
 @media screen and (max-width: 768px) {
   .card {
     width: 285px;
+    min-width: auto;
     margin-bottom: 60px;
     @include fadeIn;
   }

@@ -20,7 +20,11 @@
       <div class="slider__text" :key="localData[currentItem].id">
         {{ localData[currentItem].text }}
       </div>
-      <BaseButton class="button_gold" :text="mobileBtnText" :icon="true">
+      <BaseButton
+        class="button_gold"
+        :text="mobileBtnText"
+        :icon="$mq === 'mobile' ? true : false"
+      >
         <BaseIcon name="heart" />
       </BaseButton>
     </div>

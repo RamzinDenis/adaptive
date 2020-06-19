@@ -119,6 +119,7 @@ export default {
   @include flexBetween;
   @include container;
   max-width: calc(1110px + 40px);
+  flex-wrap: wrap;
 }
 
 .divider {
@@ -137,7 +138,6 @@ export default {
 
 @media screen and (max-width: 768px) {
   .cards-container {
-    flex-wrap: wrap;
     position: relative;
   }
   .subject,
@@ -190,6 +190,12 @@ export default {
     .main {
       padding: 0 20px;
     }
+  }
+}
+
+@media screen and(max-width: 1110px) and (min-width: 768px) {
+  .cards-container {
+    justify-content: center;
   }
 }
 </style>
