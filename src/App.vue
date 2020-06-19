@@ -21,6 +21,9 @@ export default {
 body {
   font-family: "Rubik", sans-serif;
 }
+html {
+  overflow-x: hidden;
+}
 p {
   margin: 0;
 }

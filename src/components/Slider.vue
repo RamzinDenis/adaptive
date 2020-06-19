@@ -147,6 +147,11 @@ export default {
     &__item {
       @include mobile-h1;
       min-width: auto;
+      margin-right: 0;
+      &:nth-child(1),
+      &:nth-child(2) {
+        margin-right: 40px;
+      }
       margin-right: 40px;
     }
     &__text {
@@ -155,7 +160,7 @@ export default {
     }
     &__arrow-icon {
       left: 90%;
-      margin-top: -20px;
+      margin-top: -27px;
     }
   }
 }
