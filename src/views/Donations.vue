@@ -112,9 +112,10 @@ export default {
       this.currentCard = index + 1;
     },
     mobileOnToggle() {
-      if (this.$mq !== "mobile" || this.$mq !== "md") return;
-      this.onToggle();
-      this.isShowAll === false ? window.scrollTo(0, 0) : "";
+      if (this.$mq === "mobile" || this.$mq === "md") {
+        this.onToggle();
+        this.isShowAll === false ? window.scrollTo(0, 0) : "";
+      }
     }
   }
 };
