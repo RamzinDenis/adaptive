@@ -152,7 +152,6 @@ export default {
       &:nth-child(2) {
         margin-right: 40px;
       }
-      margin-right: 40px;
     }
     &__text {
       @include mobile-text;
