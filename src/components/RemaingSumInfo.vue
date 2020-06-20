@@ -59,7 +59,7 @@ export default {
   &__value {
     width: 75%;
     @include flexBetween;
-    align-items: center;
+    align-items: flex-start;
     margin-left: 10px;
     color: $dark-grey;
   }
