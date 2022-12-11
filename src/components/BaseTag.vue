@@ -14,6 +14,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/mixins.scss";
+@import "@/scss/vars.scss";
+
 .tag {
   color: $dark-grey;
   @include body-copy_3;

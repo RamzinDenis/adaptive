@@ -55,6 +55,9 @@ export default {
 
 <style lang="scss" scoped>
 .remaining-sum {
+  @import "@/scss/mixins.scss";
+  @import "@/scss/vars.scss";
+
   @include flex;
   &__value {
     width: 75%;
@@ -75,17 +78,19 @@ export default {
   }
 }
 .green {
-  color: $green;
+  color: #8dca78;
 }
 .white {
-  color: $white;
+  color: #fff;
 }
 .icon-text {
   font-size: 8px;
   line-height: 10px;
   text-align: center;
-  @include upperCaseBold;
+  text-transform: uppercase;
+  font-weight: bold;
 }
+
 @media screen and (max-width: 600px) {
   .remaining-sum__total {
     max-width: 144px;

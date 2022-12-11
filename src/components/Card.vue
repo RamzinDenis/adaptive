@@ -72,6 +72,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/mixins.scss";
+@import "@/scss/vars.scss";
+
 .card {
   width: 320px;
   padding: 0 20px 50px 20px;

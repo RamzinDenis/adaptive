@@ -23,6 +23,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/mixins.scss";
+@import "@/scss/vars.scss";
+
 .button {
   @include flexCenter;
   justify-content: center;

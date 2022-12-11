@@ -61,6 +61,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/mixins.scss";
+@import "@/scss/vars.scss";
+
 .footer {
   min-height: 529px;
   background-color: $blue;

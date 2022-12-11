@@ -27,6 +27,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/mixins.scss";
+@import "@/scss/vars.scss";
+
 .rounded_grey {
   width: 40px;
   height: 40px;

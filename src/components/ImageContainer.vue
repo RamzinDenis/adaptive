@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/mixins.scss";
+@import "@/scss/vars.scss";
+
 .img-container {
   background-image: url("../assets/images/children.png");
   height: 180px;

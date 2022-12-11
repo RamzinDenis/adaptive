@@ -122,6 +122,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/mixins.scss";
+@import "@/scss/vars.scss";
 .cards-container {
   @include flexBetween;
   @include container;
@@ -206,7 +208,7 @@ export default {
   }
 }
 
-@media screen and(max-width: 1110px) and (min-width: 768px) {
+@media screen and (max-width: 1110px) and (min-width: 768px) {
   .cards-container {
     justify-content: center;
   }
